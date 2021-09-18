@@ -1,0 +1,16 @@
+clc,clear
+%DifferentiatePolynomial2([1,1,1,1,1],1);
+DifferentiatePolynomial2([1,1,1,1],4);
+
+%factorial(3)/factorial(3-3)
+function derivativeCoefficients = DifferentiatePolynomial2(polynomialCoefficients, derivativeOrder)
+
+    for(i=1:length(polynomialCoefficients))
+        if (i<derivativeOrder)
+            polynomialCoefficients(i) = 0
+        else
+        polynomialCoefficients(i) = factorial(i)/factorial(i-derivativeOrder)
+        end
+    end
+    
+end
