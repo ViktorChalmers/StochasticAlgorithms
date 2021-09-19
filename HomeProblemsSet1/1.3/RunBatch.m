@@ -45,4 +45,6 @@ ylabel("Median performance ")
 title("Performance plot")
 grid on
 
+table(mutationProbability,median002,'VariableNames',["Mutation probability" "Median"])
+
 % ... and here (pMut > 0.02)
