@@ -6,7 +6,7 @@ numberOfRuns = 100;                % Do NOT change
 populationSize = 100;              % Do NOT change
 maximumVariableValue = 5;          % Do NOT change (x_i in [-a,a], where a = maximumVariableValue)
 numberOfGenes = 50;                % Do NOT change
-numberOfVariables = 2;		   % Do NOT change
+numberOfVariables = 2;             % Do NOT change
 numberOfGenerations = 300;         % Do NOT change
 tournamentSize = 2;                % Do NOT change
 tournamentProbability = 0.75;      % Do NOT change
@@ -19,7 +19,7 @@ crossoverProbability = 0.8;        % Do NOT change
 
 % Define more runs here (pMut < 0.02) ...
 
-mutationProbability = linspace(0,1,11)
+mutationProbability = linspace(0,0.02,5)
 for iteration = 1:length(mutationProbability)
 sprintf('Mutation rate = %0.5f', mutationProbability(iteration))
 maximumFitnessList002 = zeros(numberOfRuns,1);
@@ -45,6 +45,6 @@ ylabel("Median performance ")
 title("Performance plot")
 grid on
 
-table(mutationProbability,median002,'VariableNames',["Mutation probability" "Median"])
+t = table(mutationProbability,median002,'VariableNames',["Mutation probability" "Median"])
 
 % ... and here (pMut > 0.02)
