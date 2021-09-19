@@ -19,7 +19,8 @@ crossoverProbability = 0.8;        % Do NOT change
 
 % Define more runs here (pMut < 0.02) ...
 
-mutationProbability = linspace(0,0.02,5)
+mutationProbability = linspace(0,0.02,10)
+h = waitbar(0,"init")
 for iteration = 1:length(mutationProbability)
 sprintf('Mutation rate = %0.5f', mutationProbability(iteration))
 maximumFitnessList002 = zeros(numberOfRuns,1);
@@ -30,7 +31,7 @@ for i = 1:numberOfRuns
   maximumFitnessList002(i,1) = maximumFitness;
 end
 
-
+waitbar(iteration/length(mutationProbability),h,"loading")
 iteration
 average002(iteration) = mean(maximumFitnessList002);
 median002(iteration) = median(maximumFitnessList002);
