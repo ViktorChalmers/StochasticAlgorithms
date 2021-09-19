@@ -1,5 +1,5 @@
 function selectedIndividualIndex = TournamentSelect(fitnessList, tournamentProbability, tournamentSize)
-"start";
+
 tmpFitnessList = fitnessList(randi(length(fitnessList),1,tournamentSize));
 tmpFitnessList = sort(tmpFitnessList,'descend');
 selectedIndividual = tmpFitnessList(end);
