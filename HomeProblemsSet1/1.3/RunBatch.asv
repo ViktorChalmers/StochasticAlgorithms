@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Parameter specifications
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-clc,clear
+
 numberOfRuns = 100;                % Do NOT change
 populationSize = 100;              % Do NOT change
 maximumVariableValue = 5;          % Do NOT change (x_i in [-a,a], where a = maximumVariableValue)
@@ -19,30 +19,28 @@ crossoverProbability = 0.8;        % Do NOT change
 
 % Define more runs here (pMut < 0.02) ...
 
-mutationProbability = linspace(0,1,11)
-for iteration = 1:length(mutationProbability)
-sprintf('Mutation rate = %0.5f', mutationProbability(iteration))
+mutationProbability = 0.02;
+sprintf('Mutation rate = %0.5f', mutationProbability)
 maximumFitnessList002 = zeros(numberOfRuns,1);
 for i = 1:numberOfRuns 
  [maximumFitness, bestVariableValues]  = RunFunctionOptimization(populationSize, numberOfGenes, numberOfVariables, maximumVariableValue, tournamentSize, ...
-                                       tournamentProbability, crossoverProbability, mutationProbability(iteration), numberOfGenerations);
+                                       tournamentProbability, crossoverProbability, mutationProbability, numberOfGenerations);
  sprintf('Run: %d, Score: %0.10f', i, maximumFitness)
   maximumFitnessList002(i,1) = maximumFitness;
 end
 
 
-iteration
-average002(iteration) = mean(maximumFitnessList002);
-median002(iteration) = median(maximumFitnessList002);
-std002(iteration) = sqrt(var(maximumFitnessList002));
-sprintf('PMut = 0.02: Median: %0.10f, Average: %0.10f, STD: %0.10f', median002(iteration), average002(iteration), std002(iteration))
-end
-%%
+% ... and here (pMut > 0.02)
 
-plot(mutationProbability,median002)
-xlabel("Mutation probability p_{mut}")
-ylabel("Median performance ")
-title("Performance plot")
-grid on
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Summary of results
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Add more results summaries here (pMut < 0.02) ...
+
+average002 = mean(maximumFitnessList002);
+median002 = median(maximumFitnessList002);
+std002 = sqrt(var(maximumFitnessList002));
+sprintf('PMut = 0.02: Median: %0.10f, Average: %0.10f, STD: %0.10f', median002, average002, std002)
 
 % ... and here (pMut > 0.02)

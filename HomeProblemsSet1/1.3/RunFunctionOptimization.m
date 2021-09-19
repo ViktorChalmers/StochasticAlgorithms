@@ -23,6 +23,7 @@ tournamentSize, tournamentProbability, crossoverProbability, mutationProbability
    for i = 1:2:populationSize
     i1 = TournamentSelect(fitnessList,tournamentProbability,tournamentSize);
     i2 = TournamentSelect(fitnessList,tournamentProbability,tournamentSize);
+    
     r = rand;
     if (r < crossoverProbability) 
      individual1 = population(i1,:);

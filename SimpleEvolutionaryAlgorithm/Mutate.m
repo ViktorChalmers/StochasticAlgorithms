@@ -1,5 +1,7 @@
 function mutatedChromosome = Mutate(chromosome,mutationProbability)
 
+
+
     nGenes = size(chromosome,2);
     mutatedChromosome = chromosome;
     for j = 1:nGenes
