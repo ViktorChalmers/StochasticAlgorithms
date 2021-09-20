@@ -28,16 +28,16 @@ for i = 1:numberOfRuns
  [maximumFitness, bestVariableValues]  = RunFunctionOptimization(populationSize, numberOfGenes, numberOfVariables, maximumVariableValue, tournamentSize, ...
                                        tournamentProbability, crossoverProbability, mutationProbability(iteration), numberOfGenerations);
  sprintf('Run: %d, Score: %0.10f', i, maximumFitness)
-  maximumFitnessList002(i,1) = maximumFitness;
+  maximumFitnessList002(i,iteration) = maximumFitness;
 end
-
+end
 waitbar(iteration/length(mutationProbability),h,"loading")
-iteration
-average002(iteration) = mean(maximumFitnessList002);
-median002(iteration) = median(maximumFitnessList002);
-std002(iteration) = sqrt(var(maximumFitnessList002));
+
+average002 = mean(maximumFitnessList002);
+median002 = median(maximumFitnessList002);
+std002 = sqrt(var(maximumFitnessList002));
 sprintf('PMut = 0.02: Median: %0.10f, Average: %0.10f, STD: %0.10f', median002(iteration), average002(iteration), std002(iteration))
-end
+
 %%
 
 plot(mutationProbability,median002)
