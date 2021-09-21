@@ -16,4 +16,5 @@ selectedIndividualIndex = find(fitnessList == selectedIndividual);
 if length(selectedIndividualIndex) > 1
    selectedIndividualIndex = selectedIndividualIndex(randi([1,length(selectedIndividualIndex)]));
 end
+
 end

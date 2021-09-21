@@ -2,7 +2,7 @@
 % Parameter specifications
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clc,clear
-numberOfRuns = 100;                % Do NOT change
+numberOfRuns = 3;                % Do NOT change
 populationSize = 100;              % Do NOT change
 maximumVariableValue = 5;          % Do NOT change (x_i in [-a,a], where a = maximumVariableValue)
 numberOfGenes = 50;                % Do NOT change
@@ -21,10 +21,9 @@ crossoverProbability = 0.8;        % Do NOT change
 
 mutationProbability = linspace(0,0.02,10)
 h = waitbar(0,"init")
-maximumFitnessList002 = zeros(numberOfRuns,length(mutationProbability))
 for iteration = 1:length(mutationProbability)
     sprintf('Mutation rate = %0.5f', mutationProbability(iteration))
-    %maximumFitnessList002 = zeros(numberOfRuns,1);
+    maximumFitnessList002 = zeros(numberOfRuns,1);
     for i = 1:numberOfRuns
         [maximumFitness, bestVariableValues]  = RunFunctionOptimization(populationSize, numberOfGenes, numberOfVariables, maximumVariableValue, tournamentSize, ...
             tournamentProbability, crossoverProbability, mutationProbability(iteration), numberOfGenerations);
