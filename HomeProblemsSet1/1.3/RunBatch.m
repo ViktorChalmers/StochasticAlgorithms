@@ -19,7 +19,7 @@ crossoverProbability = 0.8;        % Do NOT change
 
 % Define more runs here (pMut < 0.02) ...
 
-mutationProbability = linspace(0,0.02,10)
+mutationProbability = linspace(0,0.02,11)
 h = waitbar(0,"init")
 maximumFitnessList002 = zeros(numberOfRuns,length(mutationProbability))
 for iteration = 1:length(mutationProbability)
@@ -31,8 +31,9 @@ for iteration = 1:length(mutationProbability)
         sprintf('Run: %d, Score: %0.10f', i, maximumFitness)
         maximumFitnessList002(i,iteration) = maximumFitness;
     end
+    waitbar(iteration/length(mutationProbability),h,"loading")
 end
-waitbar(iteration/length(mutationProbability),h,"loading")
+
 %%
 average002 = mean(maximumFitnessList002);
 median002 = median(maximumFitnessList002);
@@ -48,6 +49,6 @@ title("Performance plot")
 grid on
 mutationProbability
 t = table(mutationProbability,median002,'VariableNames',["Mutation probability" "Median"])
-sprintf('PMut = 0.02: %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & STD: %0.10f',mutationProbability)
-sprintf('PMut = 0.02: %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & STD: %0.10f',median002)
+sprintf('PMut = 0.02: %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f STD: %0.10f',mutationProbability)
+sprintf('PMut = 0.02: %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & %0.3f & STD: %0.10f',median002)
 % ... and here (pMut > 0.02)
