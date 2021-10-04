@@ -1,5 +1,5 @@
 clc
-taboList = [44 48]
+taboList = [48 44]
 nextNode = GetNode(taboList,pheromoneLevel, visibility, alpha, beta);
 function nextNode = GetNode(taboList,pheromoneLevel, visibility, alpha, beta)
 %UNTITLED4 Summary of this function goes here
@@ -17,17 +17,13 @@ for j = 1:50
     end
 end
 
-r = rand;
+r = rand
 probSum=0;
-k = round(sum(p),5)
-if (k ~= 1)
-    error("Probsum not equal to 1")
-end
 for i = 1:length(p)
     probSum = probSum+p(i);
     if probSum>r
-        probSum;
-        i;
+        probSum
+        i
         break
     end
 end
