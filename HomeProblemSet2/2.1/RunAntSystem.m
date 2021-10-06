@@ -72,10 +72,3 @@ while (minimumPathLength > targetPathLength)
     pheromoneLevel = UpdatePheromoneLevels(pheromoneLevel,deltaPheromoneLevel,rho);          % To do: write the UpdatePheromoneLevels function
     
 end
-
-
-
-
-
-
-
