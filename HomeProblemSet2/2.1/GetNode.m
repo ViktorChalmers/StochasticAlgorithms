@@ -1,46 +1,46 @@
 function nextNode = GetNode(taboList,pheromoneLevel, visibility, alpha, beta)
-%UNTITLED4 Summary of this function goes here
-%   Detailed explanation goes here
-j = taboList(end);
-pheromoneLevel;
-visibility;
+%GetNode(taboList,pheromoneLevel, visibility, alpha, beta)
 
-p = zeros(1,50);
+currentNode = taboList(end);
 
-for l = 1:50
+[nCities ~] = size(visibility);
+
+probability = zeros(1,nCities);
+
+for l = 1:nCities
     if ismember(l,taboList)
-        down(l) = 0;
+        denominator(l) = 0;
     else
-        down(l) = pheromoneLevel(l,j)^alpha*visibility(l,j)^beta;
+        denominator(l) = pheromoneLevel(l,currentNode)^alpha*visibility(l,currentNode)^beta;
     end
 end
-down = sum(down);
 
-for i = 1:50
+denominatorSum = sum(denominator);
+
+for i = 1:nCities
     if ismember(i,taboList)
-        p(i) = 0;
+        probability(i) = 0;
     else
-        p(i) = pheromoneLevel(i,j)^alpha*visibility(i,j)^beta/down;
+        probability(i) = pheromoneLevel(i,currentNode)^alpha*visibility(i,currentNode)^beta/denominatorSum;
     end
 end
 
 r = rand;
 probSum=0;
-k = round(sum(p),5);
+k = round(sum(probability),5);
+
 if (k ~= 1)
     error("Probsum not equal to 1")
 end
 
-for i = 1:length(p)
-    probSum = probSum+p(i);
+for pNextNode = 1:length(probability)
+    probSum = probSum+probability(pNextNode);
     if probSum>r
-        probSum;
-        i;
         break
     end
 end
 
-nextNode = i;
+nextNode = pNextNode;
 
 end
 

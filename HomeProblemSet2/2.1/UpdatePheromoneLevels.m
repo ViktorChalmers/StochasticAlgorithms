@@ -1,9 +1,7 @@
-function PheromoneLevels = UpdatePheromoneLevels(pheromoneLevel,deltaPheromoneLevel,rho)
-%UNTITLED4 Summary of this function goes here
-%   Detailed explanation goes here
+function updatedPheromoneLevels = UpdatePheromoneLevels(pheromoneLevel,deltaPheromoneLevel,rho)
+%UpdatePheromoneLevels(pheromoneLevel,deltaPheromoneLevel,rho)
 
-nextPhermoneLevel = pheromoneLevel*(1-rho) + deltaPheromoneLevel;
+updatedPheromoneLevels = pheromoneLevel*(1-rho) + deltaPheromoneLevel;
 
-PheromoneLevels = nextPhermoneLevel;
 end
 

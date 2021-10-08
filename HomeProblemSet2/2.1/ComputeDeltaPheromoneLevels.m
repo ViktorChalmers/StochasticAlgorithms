@@ -1,13 +1,15 @@
 function deltaPhermone = ComputeDeltaPheromoneLevels(pathCollection,pathLengthCollection);
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
-deltaPhermone = zeros(50);
+%ComputeDeltaPheromoneLevels(pathCollection,pathLengthCollection)
+
+[nCities ~] = size(pathCollection);
+
+deltaPhermone = zeros(nCities);
 
 
-for k = 1:50
+for k = 1:nCities
     tmpPath = pathCollection(k,:);
     
-    for i = 1:49
+    for i = 1:nCities-1
         currentNode = tmpPath(i);
         nextNode = tmpPath(i+1);
         deltaPhermone(nextNode,currentNode) = deltaPhermone(nextNode,currentNode) + 1/pathLengthCollection(k);

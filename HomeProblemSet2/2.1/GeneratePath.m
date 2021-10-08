@@ -1,11 +1,12 @@
 function path = GeneratePath(pheromoneLevel, visibility, alpha, beta)
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
+%GeneratePath(pheromoneLevel, visibility, alpha, beta)
 
-startNode = randi(50);
+[nCities ~] = size(visibility);
+
+startNode = randi(nCities);
 taboList = [startNode];
 
-for i = 1:49
+for i = 1:nCities-1
 nextNode = GetNode(taboList,pheromoneLevel, visibility, alpha, beta);
 taboList = [taboList nextNode];
 end

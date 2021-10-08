@@ -77,3 +77,4 @@ elseif (iDataSet == 3)                           % Test
         alpha = 4 + (x/1000) + sin(x/70) + cos(sqrt(7)*x/100); % You may modify this!
     end
 end
+end

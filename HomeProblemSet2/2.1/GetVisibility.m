@@ -1,15 +1,17 @@
-function nij = GetVisibility(cityLocation)
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+function visability = GetVisibility(cityLocation)
+%GetVisibility(cityLocation)
+nCities = length(cityLocation(:,1));
+nij = zeros(nCities);
 
-%d = zeros(50)
-for i = 1:50
-    for j = 1:50
+for i = 1:nCities
+    for j = 1:nCities
         
-        d(i,j) = 1/norm(cityLocation(i,:)-cityLocation(j,:));
+        nij(i,j) = 1/norm(cityLocation(i,:)-cityLocation(j,:));
         
     end
 end
-nij = d;
+
+visability = nij;
+
 end
 

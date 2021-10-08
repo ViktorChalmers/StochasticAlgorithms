@@ -61,6 +61,8 @@ while (minimumPathLength > targetPathLength)
             minimumPathLength = pathLength;
             disp(sprintf('Iteration %d, ant %d: path length = %.5f',iIteration,k,minimumPathLength));
             PlotPath(connection,cityLocation,path);
+            bestPath = path;
+            bestPathLength = GetPathLength(bestPath,cityLocation);
         end
         pathCollection(k,:) = path;
         pathLengthCollection(k) = pathLength;
@@ -72,5 +74,4 @@ while (minimumPathLength > targetPathLength)
     
     deltaPheromoneLevel = ComputeDeltaPheromoneLevels(pathCollection,pathLengthCollection);  % To do: write the ComputeDeltaPheromoneLevels function
     pheromoneLevel = UpdatePheromoneLevels(pheromoneLevel,deltaPheromoneLevel,rho);          % To do: write the UpdatePheromoneLevels function
-    
 end
