@@ -34,6 +34,8 @@ hold off
 %%
 clc,clear
 f =@(x1,x2) (x1^2+x2-11)^2+(x1+x2^2-7)^2;
+%f =@(x1,x2) exp(x1+x2)
+
 %InitializePlot(f)
 % Constants
 
@@ -54,12 +56,11 @@ while(iteration<100000)
     iteration = iteration + 1;
     
     [particleBest swarmBest] = updateBestPosition(positions,f,particleBest,swarmBest);
-    [position velocities] = updateParticles(positions,velocities,weight,cognetiveConstant,socialConstant,deltaTime,particleBest,swarmBest);
+    [positions velocities] = updateParticles(positions,velocities,weight,cognetiveConstant,socialConstant,deltaTime,particleBest,swarmBest);
     
     if weight>0.4
-        weight = weight*0.7
+        weight = weight*0.7;
     end
-    
     
     clf
     
@@ -69,14 +70,15 @@ while(iteration<100000)
     a = 1;
     Z = (X.^2+Y-11).^2 + (X+Y.^2-7).^2;
     %hold all
-    Z = log(a+Z);
+    Z = log(0.1+Z);
     contour(X,Y,Z);
     %scatter3(positions(:,1),positions(:,2),"*")
     hold on
     plotParticles(particleBest,f)
+    plotParticles(swarmBest,f)
     hold off
     iteration;
     pause(0.1)
-    
+
     
 end
