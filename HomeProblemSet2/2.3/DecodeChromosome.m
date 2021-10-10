@@ -1,7 +1,9 @@
-function [wIH, wHO] = DecodeChromosome(chromosome, nIn, nHidden, nOut, wMax);
 
-wIH = zeros(nHidden+1,nIn)
-wHO = zeros(nOut,nHidden+1)
+function [wIH, wHO] = DecodeChromosome(chromosome, nIn, nHidden, nOut, wMax);
+length(chromosome);
+
+wIH = zeros(nHidden,nIn+1);
+wHO = zeros(nOut,nHidden+1);
 
 for i = 1:length(chromosome)
     if (chromosome(i) > abs(wMax))
@@ -9,14 +11,15 @@ for i = 1:length(chromosome)
     end
 end
 
-for i = 1:nHidden+1
-    wIH(i,:) = chromosome(1:nIn);
-    chromosome(1:nIn) = [];
+for i = 1:nHidden
+    wIH(i,:) = chromosome(1:nIn+1);
+    chromosome(1:nIn+1) = [];
 end
-chromosome;
+
 for i = 1:nOut
     wHO(i,:) = chromosome(1:nHidden+1);
     chromosome(1:nHidden+1) = [];
 end
+
 
 end

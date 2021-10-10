@@ -1,4 +1,3 @@
-
 function v = CalculateVelocity(vel,dT,alpha,gear,bP,ENGINE_BRAKE,bT,bTMax,m)
 g = 9.82;
 Fg = m*g*sind(alpha);
