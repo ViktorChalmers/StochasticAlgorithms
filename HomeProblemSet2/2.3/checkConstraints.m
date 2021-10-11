@@ -5,19 +5,25 @@ condition = true;
 type = "";
 value = 0;
 
-if abs(velocity)>1
+run loadConstants.m
+
+if velocity>1
     type = "velocity";
     value = velocity;
     condition = false;
-elseif abs(alpha)>1
+elseif velocity<VELOCITY_MIN/VELOCITY_MAX
+    type = "velocity";
+    value = velocity;
+    condition = false;
+elseif alpha>1 || alpha<0
     type = "alpha";
     value = alpha;
     condition = false;
-elseif abs(brakeTemperature)>1
+elseif brakeTemperature>1 || brakeTemperature<0
     type = "brakeTemperature";
     value = brakeTemperature;
     condition = false;
-elseif abs(brakePressure)>1
+elseif brakePressure>1 || brakePressure<0
     type = "brakePressure";
     value = brakePressure;
     condition = false;
@@ -26,7 +32,7 @@ elseif gear<1 || gear> 10
     "gearbreak"
     value = gear;
     condition = false;
-elseif x>  1000
+elseif x >  1000 || x<0
     type = "complete";
     value = x;
     condition = false;

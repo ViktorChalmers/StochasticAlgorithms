@@ -1,7 +1,11 @@
-function bTemp = UpdateBrakeTemperature(brakeTemperature,breakPreassure,BRAKE_CONSTNAT,tAmbient)
+function deltaBrakeTemperature = UpdateBrakeTemperature(deltaBrakeTemperature,brakeTemperature,brakePressure,BRAKE_CONSTNAT,tAmbient,tau,deltaTime)
 %
-
-deltaBT = BRAKE_CONSTNAT*breakPreassure;
-    bTemp = brakeTemperature + deltaBT;
+if brakePressure>0.01
+deltaBT = deltaBrakeTemperature+BRAKE_CONSTNAT*brakePressure*deltaTime;
+    
+else 
+    deltaBT = deltaBrakeTemperature-deltaBrakeTemperature*deltaTime/tau;
+end
+deltaBrakeTemperature = deltaBT;
 end
 

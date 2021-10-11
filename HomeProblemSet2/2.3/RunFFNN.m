@@ -7,8 +7,8 @@ neuron = sigmoid(localFieldIH);
 
 localFieldHO = mtimes(wHO(1:end,1:end-1),neuron) - wHO(:,end);
 
-gearChange = sign(localFieldHO(1));
-brakePressure = localFieldHO(2);
+gearChange = sigmoid(localFieldHO(1));
+brakePressure = sigmoid(localFieldHO(2));
 %if brakePressure>1
 %    brakePressure = 1;
 %end

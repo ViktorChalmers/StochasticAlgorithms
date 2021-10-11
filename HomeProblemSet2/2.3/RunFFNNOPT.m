@@ -1,17 +1,18 @@
 function [maximumFitness, bestWIH, bestWHO] =  RunFFNNOPT(popSize,nGenes,nGenerations,tournamentSize,...
-    tournamentProbability, crossoverProbability, mutationProbability,iSlope,iDataSet,nIn, nHidden, nOut, wMax)
+    tournamentProbability, crossoverProbability, mutationProbability,nSlopes,iDataSet,nIn, nHidden, nOut, wMax)
 
-maximumFitness  = 0;
-population = InitializePopulation(popSize,nGenes);
 
+population = InitializePopulation(nGenes,popSize);
+wBar = waitbar(0,"init");
 for gen = 1:nGenerations
+    waitbar(gen/nGenerations,wBar,"Loading ..." + gen/nGenerations*100);
     maximumFitness  = 0.0;
     fitnessList = zeros(popSize,1);
     for i = 1:popSize
         chromosome = population(i,:);
         [wIH, wHO] = DecodeChromosome(chromosome, nIn, nHidden, nOut, wMax);
-        [fitnessList(i) x(i)] = EvaluateIndividual(wIH, wHO,iSlope,iDataSet)
-        if (fitnessList(i) > maximumFitness )
+        [fitnessList(i) x(i)] = EvaluateIndividual(wIH, wHO,nSlopes,iDataSet);
+        if (fitnessList(i) > maximumFitness-1 )
             maximumFitness  = fitnessList(i);
             iBestIndividual = i;
             bestWIH = wIH;
@@ -44,7 +45,16 @@ for gen = 1:nGenerations
         temporaryPopulation(i,:) = tempIndividual;
     end
     population = temporaryPopulation;
-    
+    NextfitnessValidation = EvaluateIndividual(bestWIH, bestWHO,5,2)
+    if NextfitnessValidation<0.8*fitnessValidation
+        break
+    else
+        fitnessValidation=NextfitnessValidation
+    end
+    maximumFitness
+    hold on
+    plot(gen,maximumFitness,"o")
+    plot(gen,fitnessValidation,"o")
 end
-bestLength
+close(wBar)
 end
