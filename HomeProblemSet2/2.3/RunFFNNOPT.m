@@ -6,11 +6,11 @@ population = InitializePopulation(popSize,nGenes);
 
 for gen = 1:nGenerations
     maximumFitness  = 0.0;
-    fitnessList = zeros(popSize);
+    fitnessList = zeros(popSize,1);
     for i = 1:popSize
         chromosome = population(i,:);
         [wIH, wHO] = DecodeChromosome(chromosome, nIn, nHidden, nOut, wMax);
-        [fitnessList(i) x(i)] = EvaluateIndividual(wIH, wHO,iSlope,iDataSet);
+        [fitnessList(i) x(i)] = EvaluateIndividual(wIH, wHO,iSlope,iDataSet)
         if (fitnessList(i) > maximumFitness )
             maximumFitness  = fitnessList(i);
             iBestIndividual = i;

@@ -135,4 +135,4 @@ wMax = 5;
 nGenes = (nHidden)*(nIn+1) + nOut*(nHidden+1);
 
 [maximumFitness, bestWIH, bestWHO] = RunFFNNOPT(popSize,nGenes,nGenerations,tournamentSize,...
-    tournamentProbability, crossoverProbability, mutationProbability,iSlope,iDataSet,nIn, nHidden, nOut, wMax)
+    tournamentProbability, crossoverProbability, mutationProbability,iSlope,iDataSet,nIn, nHidden, nOut, wMax);

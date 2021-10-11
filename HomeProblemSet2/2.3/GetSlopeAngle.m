@@ -28,37 +28,37 @@ if (iDataSet == 1)                                % Training
     elseif (iSlope== 2)
         alpha = 5 + 1*sin(x/50) + cos(sqrt(2)*x/100);
     elseif (iSlope== 3)
-        alpha = 2 + 2*sin(x/50) + cos(sqrt(2)*x/100);
+        alpha = 6 + 2*sin(x/50) + cos(sqrt(2)*x/100);
     elseif (iSlope== 4)
-        alpha = 2 + 6*sin(x/50) + cos(sqrt(2)*x/100);
+        alpha = 5 + 2*sin(x/50) + cos(sqrt(2)*x/150);
     elseif (iSlope== 5)
-        alpha = 3 + 10*sin(x/25) + cos(sqrt(2)*x/100);
+        alpha = 2 + 2*sin(x/100) + cos(sqrt(2)*x/100);
     elseif (iSlope== 6)
-        alpha = 6 + 2*sin(x/25) + cos(sqrt(2)*x/50);
+        alpha = 6 + 2*sin(x/100) + cos(sqrt(2)*x/50);
     elseif (iSlope== 7)
-        alpha = 3 + 2*sin(x/60) + cos(sqrt(2)*x/25);
+        alpha = 4 + 2*sin(x/60) + cos(sqrt(2)*x/25);
     elseif (iSlope== 8)
-        alpha = 1 + 4*sin(x/50) + cos(sqrt(2)*x/100);
+        alpha = 4 + 2*sin(x/150) + cos(sqrt(2)*x/100);
     elseif (iSlope== 9)
-        alpha = 1 + 10*sin(x/50) + cos(sqrt(2)*x/100);
+        alpha = 3 + 2*sin(x/75) + cos(sqrt(2)*x/100);
     elseif (iSlope== 10)
-        alpha = 3 + 2*sin(x/50) + cos(sqrt(2)*x/100);  % You may modify this!
+        alpha = 4 + 2*sin(x/50) + cos(sqrt(2)*x/100);  % You may modify this!
     end
 elseif (iDataSet == 2)                            % Validation
     if (iSlope == 1)
         alpha = 6 - 3*sin(x/100) + cos(sqrt(3)*x/50);    % You may modify this!
     elseif (iSlope == 2)
-        alpha = 10 + sin(x/50) + cos(sqrt(2)*x/50);
+        alpha = 5 + sin(x/50) + cos(sqrt(2)*x/100);
     elseif (iSlope == 3)
         alpha = 5 + sin(x/100) + cos(sqrt(3)*x/50);
     elseif (iSlope == 4)
-        alpha = 2 + sin(x/25) + cos(sqrt(7)*x/50);
+        alpha = 2 + sin(x/100) + cos(sqrt(7)*x/200);
         %%
         %% Insert the remaining 3 validation set slopes here
         %%
         
     elseif (iSlope == 5)
-        alpha = 5 + sin(x/50) + cos(sqrt(5)*x/50);    % You may modify this!
+        alpha = 5 + sin(x/100) + cos(sqrt(5)*x/100);    % You may modify this!
     end
 elseif (iDataSet == 3)                           % Test
     if (iSlope == 1)
