@@ -1,0 +1,3 @@
+variableRegisters
+constnatRegisters
+operatorSet = ["+","-","*","/"]
