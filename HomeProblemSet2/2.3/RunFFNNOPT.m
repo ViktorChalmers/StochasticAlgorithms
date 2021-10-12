@@ -45,7 +45,7 @@ for gen = 1:nGenerations
         temporaryPopulation(i,:) = tempIndividual;
     end
     population = temporaryPopulation;
-    NextfitnessValidation = EvaluateIndividual(bestWIH, bestWHO,5,2)
+    NextfitnessValidation = EvaluateIndividual(bestWIH, bestWHO,5,3)
 %     if NextfitnessValidation<0.8*fitnessValidation
 %         break
 %     else
