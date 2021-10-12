@@ -3,8 +3,8 @@ run BestChromosome.m;
 
 run loadConstants.m;
 run loadInitialValues.m;
-iSlope = 4
-dataSet = 1
+iSlope = 1
+dataSet = 3
 alpha = GetSlopeAngle(x, iSlope,dataSet);
 
 time = 0
