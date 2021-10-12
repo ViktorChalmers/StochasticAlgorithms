@@ -25,4 +25,5 @@ mutationProbability = 1/nGenes;
 % clf
 % plot(nh,fitval)
 %%
-[fit le] = EvaluateIndividual(bestWIH, bestWHO,10,1)
+[fit le] = EvaluateIndividual(bestWIH, bestWHO,5,2)
+BestChromosome = EncodeNetwork(bestWIH, bestWHO, wMax)
