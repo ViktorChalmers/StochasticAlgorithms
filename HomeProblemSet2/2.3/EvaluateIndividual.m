@@ -1,6 +1,7 @@
 function [fitness length] = EvaluateIndividual(wIH, wHO,nSlopes,iDataSet);
 
 run loadConstants.m
+time = 0;
 
 for iSlope = 1:nSlopes
     run loadInitialValues.m
@@ -15,10 +16,13 @@ for iSlope = 1:nSlopes
         velocityArray(iteration) = velocity;
         
         input = [velocity/VELOCITY_MAX alpha/ALPHA_MAX brakeTemperature/BRAKE_TEMPERATURE_MAX]';
-        
         [gearChange brakePressure] = RunFFNN(input,wIH,wHO);
         
+        if time > 2
         gear = UpdateGear(gear,gearChange);
+        time = 0
+        end
+        time = time+deltaTime
         
         deltaBrakeTemperature = UpdateBrakeTemperature(deltaBrakeTemperature,brakeTemperature,brakePressure,BRAKE_CONSTNAT,tAmbient,tau,deltaTime);
         brakeTemperature = tAmbient + deltaBrakeTemperature;

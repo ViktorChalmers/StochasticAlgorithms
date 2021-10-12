@@ -1,7 +1,7 @@
 clc,clear,clf
 % nh = 2:2:10
 % for i = 1:length(nh)
-popSize = 10;
+popSize = 100;
 
 nGenerations = 30;
 tournamentSize = 2;
@@ -25,5 +25,5 @@ mutationProbability = 1/nGenes;
 % clf
 % plot(nh,fitval)
 %%
-[fit le] = EvaluateIndividual(bestWIH, bestWHO,5,2)
-BestChromosome = EncodeNetwork(bestWIH, bestWHO, wMax)
+[fit le] = EvaluateIndividual(wIH, wHO,10,1)
+BestChromosome = EncodeNetwork(wIH, wHO, wMax);
