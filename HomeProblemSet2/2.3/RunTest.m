@@ -3,7 +3,9 @@ run BestChromosome.m;
 
 run loadConstants.m;
 run loadInitialValues.m;
-alpha = GetSlopeAngle(x, 6, 1);
+iSlope = 5
+dataSet = 3
+alpha = GetSlopeAngle(x, iSlope,dataSet);
 
 time = 0
 nIn = 3;
@@ -33,7 +35,7 @@ while(condition)
     deltaBrakeTemperature = UpdateBrakeTemperature(deltaBrakeTemperature,brakeTemperature,brakePressure,BRAKE_CONSTNAT,tAmbient,tau,deltaTime);
     brakeTemperature = tAmbient + deltaBrakeTemperature;
     x = x + velocity*deltaTime;
-    alpha = GetSlopeAngle(x, 4, 2);
+    alpha = GetSlopeAngle(x, iSlope,dataSet);
     velocity = CalculateVelocity(velocity,deltaTime,alpha,gear,brakePressure,ENGINE_BRAKE,brakeTemperature,BRAKE_TEMPERATURE_MAX,mass);
     
     [condition type value] = checkConstraints(velocity/VELOCITY_MAX,alpha/ALPHA_MAX,brakeTemperature/BRAKE_TEMPERATURE_MAX,brakePressure,gear,x);
