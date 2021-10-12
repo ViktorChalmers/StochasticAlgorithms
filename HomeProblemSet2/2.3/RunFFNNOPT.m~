@@ -50,12 +50,9 @@ for gen = 1:nGenerations
     if NextfitnessValidation<0.8*fitnessValidation
         break
     else
-        fitnessValidation=NextfitnessValidation
+        fitnessValidation=NextfitnessValidation;
     end
-    maximumFitness
-    %hold on
-    %plot(gen,maximumFitness,"o")
-    %plot(gen,fitnessValidation,"o")
+    maximumFitness;
 end
 close(wBar)
 end

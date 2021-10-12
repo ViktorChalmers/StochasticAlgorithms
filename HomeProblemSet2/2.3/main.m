@@ -3,7 +3,7 @@ clc,clear,clf
 % for i = 1:length(nh)
 popSize = 10;
 
-nGenerations = 100;
+nGenerations = 30;
 tournamentSize = 2;
 tournamentProbability = 2;
 crossoverProbability = 0.2;
