@@ -3,7 +3,7 @@ clc,clear,clf
 % for i = 1:length(nh)
 popSize = 100;
 
-nGenerations = 30;
+nGenerations = 100;
 tournamentSize = 2;
 tournamentProbability = 2;
 crossoverProbability = 0.2;
@@ -25,5 +25,5 @@ mutationProbability = 1/nGenes;
 % clf
 % plot(nh,fitval)
 %%
-[fit le] = EvaluateIndividual(bestWIH, bestWHO,5,3)
+[fit le] = EvaluateIndividual(bestWIH, bestWHO,5,1)
 chr = EncodeNetwork(bestWIH, bestWHO, wMax);

@@ -46,16 +46,15 @@ for gen = 1:nGenerations
     end
     population = temporaryPopulation;
     NextfitnessValidation = EvaluateIndividual(bestWIH, bestWHO,5,2)
-    
-    if NextfitnessValidation<0.8*fitnessValidation
-        break
-    else
+%     if NextfitnessValidation<0.8*fitnessValidation
+%         break
+%     else
         fitnessValidation=NextfitnessValidation
-    end
+%     end
     maximumFitness
-    %hold on
-    %plot(gen,maximumFitness,"o")
-    %plot(gen,fitnessValidation,"o")
+    hold on
+    plot(gen,maximumFitness,"o")
+    plot(gen,fitnessValidation,"o")
 end
 close(wBar)
 end
