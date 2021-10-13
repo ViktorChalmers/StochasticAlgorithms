@@ -18,15 +18,15 @@
 %%  a bit. :)
 %% The comments have been added as a clarification of the
 %% problem that should be solved!).
-x = 1:1000;
-clf
-hold on
-for i = 1:5
-    subplot(2,5,i)
-alpha = GetSlopeAngle(x,i,3);
-plot(x,alpha)
-title(i)
-end
+%x = 1:1000;
+%clf
+%hold on
+%for i = 1:10
+%    subplot(2,5,i)
+%alpha = GetSlopeAngle(x,i,1);
+%plot(x,alpha)
+%title(i)
+%end
 
 
 function alpha = GetSlopeAngle(x, iSlope, iDataSet)

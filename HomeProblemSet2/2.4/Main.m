@@ -1,5 +1,6 @@
-minChromosomeLength = 3;
-maxChromosomeLength = 10;
+clc,clear
+minChromosomeLength = 4;
+maxChromosomeLength = 12;
 populationSize = 10;
 
 population = InitializePopulation(populationSize,minChromosomeLength,maxChromosomeLength);

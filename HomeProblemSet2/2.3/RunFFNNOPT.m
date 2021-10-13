@@ -1,9 +1,10 @@
-function [maximumFitness, bestWIH, bestWHO] =  RunFFNNOPT(popSize,nGenes,nGenerations,tournamentSize,...
+function [maximumFitness, bestWIH, bestWHO,maxfitValArr,maxfitArr,ge] =  RunFFNNOPT(popSize,nGenes,nGenerations,tournamentSize,...
     tournamentProbability, crossoverProbability, mutationProbability,nSlopes,iDataSet,nIn, nHidden, nOut, wMax)
 
 fitnessValidation = 0
 population = InitializePopulation(nGenes,popSize);
 wBar = waitbar(0,"init");
+
 for gen = 1:nGenerations
     waitbar(gen/nGenerations,wBar,"Loading ..." + gen/nGenerations*100);
     maximumFitness  = 0.0;
@@ -52,9 +53,16 @@ for gen = 1:nGenerations
         fitnessValidation=NextfitnessValidation
 %     end
     maximumFitness
-    hold on
-    plot(gen,maximumFitness,"o")
-    plot(gen,fitnessValidation,"o")
+    %hold on
+    %plot(gen,maximumFitness,"o")
+    %plot(gen,fitnessValidation,"o")
+    
+    maxfitArr(gen) = maximumFitness;
+    maxfitValArr(gen) = fitnessValidation;
 end
+hold on
+ge = 1:nGenerations;
+plot(ge,maxfitArr)
+plot(ge,maxfitValArr)
 close(wBar)
 end
