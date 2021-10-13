@@ -1,7 +1,7 @@
 clc,clear,clf
 % nh = 2:2:10
 % for i = 1:length(nh)
-popSize = 10;
+popSize = 100;
 
 nGenerations = 1000;
 tournamentSize = 2;
@@ -14,9 +14,9 @@ nIn = 3;
 nHidden = 8;
 nOut = 2;
 wMax = 5;
-nGenes = (nHidden)*(nIn+1) + nOut*(nHidden+1);
+nGenes = (nHidden)*(nIn+1) + nOut*(nHidden+1)
 mutationProbability = 1/nGenes;
-
+%%
 [maximumFitness, bestWIH, bestWHO,maxfitValArr,maxfitArr,ge] = RunFFNNOPT(popSize,nGenes,nGenerations,tournamentSize,...
     tournamentProbability, crossoverProbability, mutationProbability,nSlopes,iDataSet,nIn, nHidden, nOut, wMax);
 %fitval(i) = maximumFitness
@@ -25,5 +25,5 @@ mutationProbability = 1/nGenes;
 % clf
 % plot(nh,fitval)
 %%
-[fit le] = EvaluateIndividual(bestWIH, bestWHO,5,2)
+[fit le] = EvaluateIndividual(bestWIH, bestWHO,10,1)
 chr = EncodeNetwork(bestWIH, bestWHO, wMax);
