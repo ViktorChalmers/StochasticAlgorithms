@@ -2,8 +2,6 @@ function [maximumFitness, bestWIH, bestWHO,maxfitValArr,maxfitArr,ge] =  RunFFNN
     tournamentProbability, crossoverProbability, mutationProbability,nSlopes,iDataSet,nIn, nHidden, nOut, wMax)
 bestWHO = 0
 bestWIH = 0
-nextBestWIH = 0
-nextBestWHO = 0
 
 fitnessValidation = 0
 population = InitializePopulation(nGenes,popSize);
@@ -16,8 +14,14 @@ for gen = 1:nGenerations
     for i = 1:popSize
         chromosome = population(i,:);
         [wIH, wHO] = DecodeChromosome(chromosome, nIn, nHidden, nOut, wMax);
-        [fitnessList(i) x(i)] = EvaluateIndividual(wIH, wHO,nSlopes,iDataSet);
-       if (fitnessList(i) > maximumFitness )
+        if isequal(wIH,bestWIH) && isequal(wHO,bestWHO)
+            fitnessList(i) = maximumFitness;
+            x(i) = bestLength;
+            "same"
+        else
+            [fitnessList(i) x(i)] = EvaluateIndividual(wIH, wHO,nSlopes,iDataSet);
+        end
+        if (fitnessList(i) > maximumFitness )
             maximumFitness  = fitnessList(i);
             iBestIndividual = i;
             bestWIH = wIH;
@@ -51,12 +55,12 @@ for gen = 1:nGenerations
     end
     population = temporaryPopulation;
     if isequal(nextBestWIH,bestWIH) && isequal(nextBestWHO,bestWHO)
-        "sameVal";
+        "sameVal"
         NextfitnessValidation = fitnessValidation;
     else
     nextBestWIH = bestWIH;
     nextBestWHO = bestWHO;
-    NextfitnessValidation = EvaluateIndividual(nextBestWIH, nextBestWHO,5,2);
+    NextfitnessValidation = EvaluateIndividual(nextBestWIH, nextBestWHO,5,3)
     end
     %     if NextfitnessValidation<0.8*fitnessValidation
     %         break
