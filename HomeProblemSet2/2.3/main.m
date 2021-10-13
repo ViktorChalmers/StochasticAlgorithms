@@ -1,7 +1,7 @@
 clc,clear,clf
 % nh = 2:2:10
 % for i = 1:length(nh)
-popSize = 100;
+popSize = 10;
 
 nGenerations = 1000;
 tournamentSize = 2;
