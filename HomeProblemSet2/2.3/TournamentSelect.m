@@ -1,6 +1,6 @@
 function selectedIndividualIndex = TournamentSelect(fitnessList, tournamentProbability, tournamentSize)
 
-tmpIndex = 1 + fix(rand(1,3)*length(fitnessList));
+tmpIndex = 1 + fix(rand(1,tournamentSize)*length(fitnessList));
 
 
 tmpFitnessList = fitnessList(tmpIndex);
@@ -19,5 +19,4 @@ for i = 1:tournamentSize-1
         tmpFitnessList(maxIndex) = [];
     end
 end
-
 end
